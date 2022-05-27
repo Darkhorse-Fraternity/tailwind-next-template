@@ -20,7 +20,40 @@ a {
 }
 
 @layer components {
-  .form-checkbox {
-    @apply rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50
+  .dmc-form-checkbox {
+    @apply checkbox  checkbox-primary  border-base-300 border-2  rounded-md   h-[1rem] w-[1rem]  p-0   
+    focus:border-indigo-300   focus:outline-none   focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-20 
+  }
+  .dmc-form-input {
+    @apply input input-primary w-full border-base-300  h-[38px]  
+    focus:outline-none focus:border-2 focus:ring-primary  focus:border-primary
+  }
+  .dmc-form-textarea {
+    @apply textarea  textarea-primary border-base-300  w-full 
+    focus:outline-none  focus:border-2 focus:ring-primary  focus:border-primary 
+  }
+
+  .dmc-form-select {
+    @apply  select  border-base-300 select-primary  focus:border-2  focus:outline-none focus:border-primary
+  }
+
+  .dmc-label {
+    @apply label text-xs font-bold p-0 capitalize
+  }
+
+  .required {
+    @apply  after:content-['*'] after:text-red-600 after:ml-1 after:font-normal
+  }
+
+  .spinner {
+    @apply  absolute  h-12 w-12 animate-spin rounded-full border-8 border-dashed border-primary border-t-transparent 
+  }
+  
+  .abs-center {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center
   }
 }

@@ -1,3 +1,5 @@
+const themes = ['winter', 'pastel', 'emerald', 'valentine', 'forest', 'dark']
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -6,5 +8,10 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require('daisyui'), require('@tailwindcss/forms')],
+  plugins: [require('daisyui'), require('tailwindcss-animate')],
+  themes: themes,
+  daisyui: {
+    themes: themes,
+    darkTheme: 'forest',
+  },
 }

@@ -1,4 +1,4 @@
-import Layout from 'components/layout'
+import Layout from 'components/nav/layout'
 import { NextPageWithLayout } from 'types/page'
 
 const Settings: NextPageWithLayout = () => {

@@ -1,10 +1,15 @@
 import { NextPage } from 'next'
 import { ReactElement, ReactNode } from 'react'
 
-type NextPageWithLayout = NextPage & {
+export type NextPageWithLayout<P = unknown> = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
 
-type PageName = '' | 'settings' | 'dashboard' | 'accounts'
-
-export type { NextPageWithLayout, PageName }
+export type SortBy = { id: string; desc: boolean }
+export type Filter = { id: string; value: string }
+export type PagenationType = {
+  page: number
+  perPage: number
+  filters?: Filter[]
+  sortBy?: SortBy[]
+}

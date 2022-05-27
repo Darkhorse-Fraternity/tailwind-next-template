@@ -4,12 +4,13 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { useRouter } from 'next/router'
-import { useLoginApi } from 'lib/request/useApi'
 import Link from 'next/link'
-import Header from 'components/header'
+import Header from 'components/nav/header'
 import { NextPageWithLayout } from 'types/page'
-import { NoSlideMenuLayout } from 'components/layout'
+import { NoSlideMenuLayout } from 'components/nav/layout'
 import { logoAddress } from 'lib/config'
+import { useAxiosMutation } from 'lib/request/use-fetch'
+import { LoginPostResponse, LoginPostReuqest } from 'lib/request/http-api-type'
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -48,10 +49,14 @@ const LoginContainer: FC = ({ children }) => {
 }
 
 const LoginForm: FC = () => {
-  const { isValidating, trigger } = useLoginApi()
+  const { isLoading, mutate } = useAxiosMutation<LoginPostResponse,LoginPostReuqest>(
+     '/api/sign',
+    {},
+    'POST'
+  )
   const router = useRouter()
   const onSubmit: SubmitType = async (data) => {
-    await trigger(data)
+    await mutate(data)
     router.push('/')
   }
   const {
@@ -127,7 +132,7 @@ const LoginForm: FC = () => {
       <div>
         <button
           type="submit"
-          disabled={isValidating}
+          disabled={isLoading}
           className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-75"
         >
           {/* <span className="absolute left-0 inset-y-0 flex items-center pl-3">

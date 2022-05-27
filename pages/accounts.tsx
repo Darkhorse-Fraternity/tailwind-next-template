@@ -1,11 +1,11 @@
-import Layout from 'components/layout'
+import Layout from 'components/nav/layout'
 import React, { FC } from 'react'
 import { NextPageWithLayout } from 'types/page'
 import Table from '../components/table'
 import { SelectColumnFilter } from '../components/table/filter'
 import Image from 'next/image'
-import { classNames } from 'lib/utils'
 import { Cell, CellProps, Column, TableInstance } from 'react-table'
+import classNames from 'classnames'
 
 const getData = () => {
   const data = [
@@ -186,7 +186,6 @@ const Accounts: NextPageWithLayout = () => {
         columns={columns}
         data={data}
         onEdit={onClick}
-        onDelete={onClick}
         onAdd={onClick}
       />
     </div>
